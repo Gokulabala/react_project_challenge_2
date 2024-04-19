@@ -8,7 +8,8 @@ function App() {
   
   const [reqType, setreqType] = useState('users')
   const [items, setItems] = useState([])
-  const [isLoading, setIsLoading] = useState(true)  
+  const [isLoading, setIsLoading] = useState(true)
+  const [fetchError, setFetchError] = useState(null)  
   
   useEffect(()=>{
     const fetchData = async()=>{
@@ -17,13 +18,14 @@ function App() {
 
         const response = await fetch(`${url}${reqType}`)
         // console.log(response)
-        
+        if(!response.ok) throw Error("Error fetching data")
         const data = await response.json()
         // console.log(data)
         
         setItems(data)
+        setFetchError(null)
       } catch (error) {
-        console.log(error)
+          setFetchError(error.message)
       }finally{
         setIsLoading(false)
       }
@@ -44,6 +46,7 @@ function App() {
       />
       <main>
         {isLoading && <p>Loading Data...</p>}
+        {!isLoading && fetchError && <p>{`Error:${fetchError}`}</p>}
         {!isLoading && <Display
           items = {items}
           />}
