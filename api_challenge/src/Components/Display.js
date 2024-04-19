@@ -3,8 +3,8 @@
 const Display = (items)=>{
     
     return(
-        <ul>
-        
+        <>
+        <ul>        
             {items.items.map((item)=> {
                 return(
                 <li key={item.id} >
@@ -12,9 +12,9 @@ const Display = (items)=>{
                 </li>
                     
                 )}
-                )}
-            
-        </ul> 
+                )}            
+        </ul>
+        </> 
     )
 }
 

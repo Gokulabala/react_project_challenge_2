@@ -1,7 +1,7 @@
 import Button from "./Button"
 
 
-const Headers = ({reqType, setreqType})=>{
+const Headers = ({reqType, setreqType,handleClick})=>{
 
     return(
        <div>       
@@ -10,16 +10,19 @@ const Headers = ({reqType, setreqType})=>{
             buttonText = 'users'
             reqType = {reqType}
             setreqType = {setreqType}
+            handleClick = {handleClick}
             />
             <Button 
             buttonText = 'posts'
             reqType = {reqType}
             setreqType = {setreqType}
+            handleClick = {handleClick}
             />
             <Button 
             buttonText = 'comments'
             reqType = {reqType}
             setreqType = {setreqType}
+            handleClick = {handleClick}
             />            
         </form>
         </div>
